@@ -1,0 +1,16 @@
+PRODUCT_GENERIC_PROPERTIES += \
+    dalvik.vm.debug.alloc=0 \
+    keyguard.no_require_sim=true \
+    net.tethering.noprovisioning=true \
+    persist.sys.disable_rescue=true \
+    ro.atrace.core.services=com.google.android.gms,com.google.android.gms.ui,com.google.android.gms.persistent \
+    ro.carrier=unknown \
+    ro.com.android.dateformat=MM-dd-yyyy \
+    ro.opa.eligible_device=true \
+    ro.setupwizard.enterprise_mode=1 \
+    ro.url.legal=http://www.google.com/intl/%s/mobile/android/basic/phone-legal.html \
+    ro.url.legal.android_privacy=http://www.google.com/intl/%s/mobile/android/basic/privacy.html \
+    ro.control_privapp_permissions=log \
+    persist.sys.theme.accentcolor=-1 \
+    ro.config.notification_sound=Ariel.ogg \
+    ro.config.alarm_alert=Argon.ogg
