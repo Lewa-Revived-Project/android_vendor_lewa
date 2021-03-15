@@ -173,7 +173,7 @@ else
 endif
 
 # Lewa-Revived Specific props
-$(call inherit-product, vendor/dot/config/lewa_props.mk)
+$(call inherit-product, vendor/lewa/config/lewa_props.mk)
 
 # Lewa-Revived Version
 include vendor/lewa/config/version.mk
