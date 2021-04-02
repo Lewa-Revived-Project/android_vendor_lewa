@@ -68,7 +68,7 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 
 # Don't compile SystemUITests
 EXCLUDE_SYSTEMUI_TESTS := true
-	
+
 # Do not include art debug targets
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 
@@ -93,7 +93,7 @@ PRODUCT_PACKAGES += \
 # Specific Overlays
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/lewa/overlay
 DEVICE_PACKAGE_OVERLAYS += vendor/lewa/overlay/common
-	
+
 # Config
 PRODUCT_PACKAGES += \
     SimpleDeviceConfig
@@ -176,4 +176,4 @@ endif
 $(call inherit-product, vendor/lewa/config/lewa_props.mk)
 
 # Lewa-Revived Version
-include vendor/lewa/config/version.mk
+include vendor/lewa/config/lewa_version.mk
