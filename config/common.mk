@@ -42,9 +42,9 @@ endif
 PRODUCT_COPY_FILES += \
     vendor/lewa/config/permissions/backup.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/backup.xml
 
-# lewa-revived-specific broadcast actions whitelist
+# Lineage specific broadcast actions whitelist
 PRODUCT_COPY_FILES += \
-    vendor/lewa/config/permissions/lewa-sysconfig.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/lewa-sysconfig.xml
+    vendor/lewa/config/permissions/lineage-sysconfig.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/sysconfig/lineage-sysconfig.xml
 
 # Copy all lewa-specific init rc files
 $(foreach f,$(wildcard vendor/lewa/prebuilt/common/etc/init/*.rc),\
@@ -65,9 +65,6 @@ PRODUCT_COPY_FILES += \
 # Enforce privapp-permissions whitelist
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.control_privapp_permissions=enforce
-
-# Don't compile SystemUITests
-EXCLUDE_SYSTEMUI_TESTS := true
 
 # Do not include art debug targets
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
@@ -93,6 +90,13 @@ PRODUCT_PACKAGES += \
 # Specific Overlays
 PRODUCT_ENFORCE_RRO_EXCLUDED_OVERLAYS += vendor/lewa/overlay
 DEVICE_PACKAGE_OVERLAYS += vendor/lewa/overlay/common
+
+# Lineage packages
+PRODUCT_PACKAGES += \
+    LineageParts \
+    LineageSettingsProvider \
+    LineageSetupWizard \
+    Updater
 
 # Config
 PRODUCT_PACKAGES += \
@@ -162,8 +166,8 @@ endif
 PRODUCT_DEXPREOPT_SPEED_APPS += \
     SystemUI
 
-PRODUCT_VERSION_MAJOR = 18
-PRODUCT_VERSION_MINOR = 1
+PRODUCT_VERSION_MAJOR = 11
+PRODUCT_VERSION_MINOR = 0
 PRODUCT_VERSION_MAINTENANCE := 0
 
 ifeq ($(TARGET_VENDOR_SHOW_MAINTENANCE_VERSION),true)
