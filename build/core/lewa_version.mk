@@ -14,7 +14,7 @@
 # limitations under the License.
 
 #Lewa-Revived Version :
-LEWA_VERSION = beta-1.0.0
+LEWA_MOD_VERSION = beta-1.0.0
 
 ifndef LEWA_BUILD_TYPE
     LEWA_BUILD_TYPE := UNOFFICIAL
@@ -40,17 +40,17 @@ LEWA_VERSION := Lewa-Revived-11-$(LEWA_VERSION)-$(CURRENT_DEVICE)-$(LEWA_BUILD_T
 
 LEWA_FINGERPRINT := Lewa-Revived-/$(LEWA_VERSION)/$(PLATFORM_VERSION)/$(TARGET_PRODUCT_SHORT)/$(CUSTOM_BUILD_DATE)
 
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_PRODUCT_PROPERTIES += \
   ro.lewa-revived.version=$(LEWA_VERSION) \
   ro.lewa-revived.releasetype=$(LEWA_BUILD_TYPE) \
-  ro.modversion=$(LEWA_VERSION)
+  ro.modversion=$(LEWA_MOD_VERSION)
 
 LEWA_DISPLAY_VERSION := Lewa-Revived-$(LEWA_VERSION)-$(LEWA_BUILD_TYPE)
 
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_PRODUCT_PROPERTIES += \
   ro.lewa-revived.display.version=$(LEWA_DISPLAY_VERSION)\
   ro.lewa-revived.fingerprint=$(LEWA_FINGERPRINT)
 
 # LineageOS Platform SDK Version
-PRODUCT_PROPERTY_OVERRIDES += \
+PRODUCT_PRODUCT_PROPERTIES += \
   ro.lineage.build.version.plat.sdk=$(LINEAGE_PLATFORM_SDK_VERSION)

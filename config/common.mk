@@ -210,6 +210,3 @@ endif
 
 # Lewa-Revived Specific props
 $(call inherit-product, vendor/lewa/config/lewa_props.mk)
-
-# Lewa-Revived Version
-include vendor/lewa/config/lewa_version.mk
