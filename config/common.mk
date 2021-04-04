@@ -66,6 +66,17 @@ PRODUCT_COPY_FILES += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.control_privapp_permissions=enforce
 
+# Include AOSP audio files
+include vendor/lineage/config/aosp_audio.mk
+
+# Include Lineage audio files
+include vendor/lineage/config/lineage_audio.mk
+
+ifneq ($(TARGET_DISABLE_LINEAGE_SDK), true)
+# Lineage SDK
+include vendor/lineage/config/lineage_sdk_common.mk
+endif
+
 # Do not include art debug targets
 PRODUCT_ART_TARGET_INCLUDE_DEBUG_BUILD := false
 
@@ -169,6 +180,27 @@ PRODUCT_DEXPREOPT_SPEED_APPS += \
 PRODUCT_VERSION_MAJOR = 11
 PRODUCT_VERSION_MINOR = 0
 PRODUCT_VERSION_MAINTENANCE := 0
+
+PRODUCT_EXTRA_RECOVERY_KEYS += \
+    vendor/lewa/build/target/product/security/lineage
+
+ifneq ($(PRODUCT_DEFAULT_DEV_CERTIFICATE),)
+ifneq ($(PRODUCT_DEFAULT_DEV_CERTIFICATE),build/target/product/security/testkey)
+    ifneq ($(LINEAGE_BUILDTYPE), UNOFFICIAL)
+        ifndef TARGET_VENDOR_RELEASE_BUILD_ID
+            ifneq ($(LINEAGE_EXTRAVERSION),)
+                # Remove leading dash from LINEAGE_EXTRAVERSION
+                LINEAGE_EXTRAVERSION := $(shell echo $(LINEAGE_EXTRAVERSION) | sed 's/-//')
+                TARGET_VENDOR_RELEASE_BUILD_ID := $(LINEAGE_EXTRAVERSION)
+            else
+                TARGET_VENDOR_RELEASE_BUILD_ID := $(shell date -u +%Y%m%d)
+            endif
+        else
+            TARGET_VENDOR_RELEASE_BUILD_ID := $(TARGET_VENDOR_RELEASE_BUILD_ID)
+        endif
+    endif
+endif
+endif
 
 ifeq ($(TARGET_VENDOR_SHOW_MAINTENANCE_VERSION),true)
     LINEAGE_VERSION_MAINTENANCE := $(PRODUCT_VERSION_MAINTENANCE)
